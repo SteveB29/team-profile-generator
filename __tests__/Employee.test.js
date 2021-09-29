@@ -9,4 +9,5 @@ test("creates an Employee object", () => {
 
   expect(employee.getName()).toEqual('Steve');
   expect(employee.getId()).toEqual(1);
+  expect(employee.getEmail()).toEqual('steven.bendrick@gmail.com');
 });
