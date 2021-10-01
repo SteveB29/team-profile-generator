@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 
 const specificQuestions = {
   manager: {
-    type: 'input',
+    type: 'number',
     name: 'office',
     message: `Please enter the manager's office`
   },
@@ -18,6 +18,7 @@ const specificQuestions = {
   }
 }
 
+// use default parameters to set blank array?
 const promptQuestions = (teamMember) => {
 
   const protoQuestions = [
@@ -27,7 +28,7 @@ const promptQuestions = (teamMember) => {
       message: `Please enter the ${teamMember}'s name`
     },
     {
-      type: 'input',
+      type: 'number',
       name: 'id',
       message: `Please enter the ${teamMember}'s id`
     },
@@ -38,13 +39,15 @@ const promptQuestions = (teamMember) => {
     }
   ]
 
+  // add team member specific question to the generic qustions
   protoQuestions.push(specificQuestions[teamMember]);
+
+  // initiates inqurer prompt and returns data
   return inquirer.prompt(protoQuestions);
 
-  // return inquirer.prompt(protoQuestions.push(specificQuestions[teamMember]));
 };
 
-promptQuestions('manager');
-  // .then(data => {
-  //   console.log(data);
-  // });
+promptQuestions('intern')
+  .then(data => {
+    console.log(data);
+  });
