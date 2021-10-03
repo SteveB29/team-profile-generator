@@ -1,21 +1,30 @@
 const inquirer = require('inquirer');
 
+const answerArray = [];
+
 const specificQuestions = {
-  manager: {
+  Manager: {
     type: 'number',
-    name: 'office',
+    name: 'managerOffice',
     message: `Please enter the manager's office`
   },
-  engineer: {
+  Engineer: {
     type: 'input',
-    name: 'github',
+    name: 'engineerGithub',
     message: `Please enter the engineer's github`
   },
-  intern: {
+  Intern: {
     type: 'input',
-    name: 'school',
+    name: 'internSchool',
     message: `Please enter the intern's school`
   }
+}
+
+const finalQuestion = {
+    type: 'list',
+    name: 'nextChoice',
+    message: 'Would you like to enter more team members or build the website?',
+    choices: ['Engineer','Intern','Finish']
 }
 
 // use default parameters to set blank array?
@@ -41,13 +50,19 @@ const promptQuestions = (teamMember) => {
 
   // add team member specific question to the generic qustions
   protoQuestions.push(specificQuestions[teamMember]);
+  protoQuestions.push(finalQuestion);
 
-  // initiates inqurer prompt and returns data
-  return inquirer.prompt(protoQuestions);
+  // initiates inqurer prompt and cycles while still entering team members, then console logs data
+  inquirer.prompt(protoQuestions)
+    .then(data => {
+      answerArray.push(data);
+      if (data.nextChoice === 'Finish') {
+        console.log(answerArray);
+      } else {
+        promptQuestions(data.nextChoice);
+      }
+    });
 
 };
 
-promptQuestions('intern')
-  .then(data => {
-    console.log(data);
-  });
+promptQuestions('Manager');
