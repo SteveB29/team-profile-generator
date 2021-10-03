@@ -57,6 +57,13 @@ const finalQuestion = {
 
 const promptQuestions = teamMember => {
 
+  if (answerArray.length === 0) {
+    console.log(`
+  =======================================
+  Welcome to the Team Profile Generator!!
+  =======================================`)
+  }
+
   // generic questions for all Employees
   const protoQuestions = [
     {
