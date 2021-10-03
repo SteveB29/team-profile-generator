@@ -1,5 +1,8 @@
 const inquirer = require('inquirer');
 const validator = require('email-validator');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 const generatePage = require('./src/page-template.js');
 const { writeFile } = require('./utils/generate-site.js')
 
@@ -117,10 +120,18 @@ const promptQuestions = teamMember => {
     .prompt(protoQuestions)
     // passes resulting answers object
     .then(data => {
-      // add which teammember type to answer object
-      data.title = teamMember;
-      // pushes answer object to array
-      answerArray.push(data);
+      // create object based on which employee is called and pushed to answer array
+      if (teamMember === "Manager") {
+        const newMember = new Manager(data.name, data.id, data.email, data.office);
+        answerArray.push(newMember);
+      } else if (teamMember === "Engineer") {
+        const newMember = new Engineer(data.name, data.id, data.email, data.github);
+        answerArray.push(newMember);
+      } else {
+        const newMember = new Intern(data.name, data.id, data.email, data.school);
+        answerArray.push(newMember);
+      }
+      
       // if 'Finish' is chosen, returns data. Otherwise restarts questions
       if (data.nextChoice === 'Finish') {
         return answerArray;

@@ -1,10 +1,10 @@
 const generateUnique = dataObj => {
-  if(dataObj.title === "Manager") {
+  if(dataObj.getRole() === "Manager") {
     return`Office Number: ${dataObj.office}`;
-  } else if (dataObj.title === "Engineer") {
-    return`GitHub: <a href="https://github.com/${dataObj.github}">${dataObj.github}</a>`;
+  } else if (dataObj.getRole() === "Engineer") {
+    return`GitHub: <a href="https://github.com/${dataObj.getGithub()}">${dataObj.getGithub()}</a>`;
   } else {
-    return`School: ${dataObj.school}`;
+    return`School: ${dataObj.getSchool()}`;
   }
 };
 
@@ -15,18 +15,18 @@ const generateTile = tileObj => {
         <div class="card-content has-background-info">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">${tileObj.name}</p>
-              <p class="subtitle is-6">${tileObj.title}</p>
+              <p class="title is-4">${tileObj.getName()}</p>
+              <p class="subtitle is-6">${tileObj.getRole()}</p>
             </div>
           </div>
         </div>
         <div class="card-content p-2">
           <div class="content">
             <div class="box py-3">
-              <p>Id: ${tileObj.id}</p>
+              <p>Id: ${tileObj.getId()}</p>
             </div>
             <div class="box py-3">
-              <p>Email: <a href="mailto:${tileObj.email}">${tileObj.email}</a></p>
+              <p>Email: <a href="mailto:${tileObj.getEmail()}">${tileObj.getEmail()}</a></p>
             </div>
             <div class="box py-3">
               <p>${generateUnique(tileObj)}</p>
