@@ -7,6 +7,9 @@
 - [Go to Contributing](#contributing)
 - [Go to Test Instructions](#test-instructions)
 - [Go to Questions](#questions)
+## SCreenshots
+![Command Prompt](./assets/screenshots/command-line.png)
+![Deployed Application](./assets/screenshots/deployed-app.png)
 ## Install Instructions
 - Download or clone from GitHub. Install npm's `npm install`.
 ## Usage
@@ -20,4 +23,5 @@
 - Jest is the default test program. From the command line `npm run test`
 ## Questions
 - [GitHub](https://github.com/SteveB29)
+- [Application Directory](https://github.com/SteveB29/team-profile-generator)
 - [Email Me](mailto:steven.bendrick@gmail.com)
