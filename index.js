@@ -101,6 +101,7 @@ const promptQuestions = teamMember => {
 
   // add team member specific question to the generic qustions
   protoQuestions.push(specificQuestions[teamMember]);
+  protoQuestions.push(finalQuestion);
 
   // initiates inquirer prompt
   return inquirer
@@ -109,21 +110,12 @@ const promptQuestions = teamMember => {
     .then(data => {
       data.title = teamMember;
       answerArray.push(data);
-      return answerArray;
-    })
-    // creates new prompt asking to add more or finish
-    // .then( () => {
-    //   inquirer
-    //     .prompt(finalQuestion)
-    //     // checks if answer is finish, if not restarts prompt with Engineer/Intern choice
-    //     .then(data =>{
-    //       if (data.nextChoice === 'Finish') {
-    //         return answerArray;
-    //       } else {
-    //         return promptQuestions(data.nextChoice);
-    //       }
-    //     });
-    // });
+      if (data.nextChoice === 'Finish') {
+        return answerArray;
+      } else {
+        return promptQuestions(data.nextChoice);
+      }
+    });
 };
 
 promptQuestions('Manager')
