@@ -2,7 +2,7 @@ const generateUnique = dataObj => {
   if(dataObj.getRole() === "Manager") {
     return`Office Number: ${dataObj.getOffice()}`;
   } else if (dataObj.getRole() === "Engineer") {
-    return`GitHub: <a href="https://github.com/${dataObj.getGithub()}">${dataObj.getGithub()}</a>`;
+    return`GitHub: <a href="https://github.com/${dataObj.getGithub()}" target="_blank">${dataObj.getGithub()}</a>`;
   } else {
     return`School: ${dataObj.getSchool()}`;
   }
@@ -26,7 +26,7 @@ const generateTile = tileObj => {
               <p>Id: ${tileObj.getId()}</p>
             </div>
             <div class="box py-3">
-              <p>Email: <a href="mailto:${tileObj.getEmail()}">${tileObj.getEmail()}</a></p>
+              <p>Email: <a href="mailto:${tileObj.getEmail()}" target="_blank">${tileObj.getEmail()}</a></p>
             </div>
             <div class="box py-3">
               <p>${generateUnique(tileObj)}</p>
