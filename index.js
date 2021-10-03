@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const validator = require('email-validator');
-const generatePage = require('./src/page-template');
-const writeFile = require('./utils/generate-site')
+const generatePage = require('./src/page-template.js');
+const { writeFile } = require('./utils/generate-site.js')
 
 const answerArray = [];
 
@@ -128,5 +128,11 @@ promptQuestions('Manager')
     return generatePage(answers);
   })
   .then(pageHTML => {
-    console.log(pageHTML);
+    return writeFile(pageHTML);
   })
+  .then(writeFileResponse => {
+    console.log(writeFileResponse);
+  })
+  .catch(err => {
+    console.log(err);
+  });
