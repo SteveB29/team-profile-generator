@@ -107,6 +107,7 @@ const promptQuestions = (teamMember) => {
     .prompt(protoQuestions)
     // pushes data to answer array
     .then(data => {
+      data.title = teamMember;
       answerArray.push(data);
     })
     // creates new prompt asking to add more or finish
