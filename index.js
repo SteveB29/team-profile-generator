@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const validator = require('email-validator');
 
 const answerArray = [];
 
@@ -43,7 +44,15 @@ const promptQuestions = (teamMember) => {
     {
       type: 'input',
       name: 'email',
-      message: `Please enter the ${teamMember}'s email`
+      message: `Please enter the ${teamMember}'s email`,
+      validate: emailInput => {
+        if (validator.validate(emailInput)) {
+          return true;
+        } else {
+          console.log('Please enter a valid email');
+          return false;
+        }
+      }
     }
   ]
 
