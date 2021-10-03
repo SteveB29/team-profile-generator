@@ -27,7 +27,6 @@ const finalQuestion = {
     choices: ['Engineer','Intern','Finish']
 }
 
-// use default parameters to set blank array?
 const promptQuestions = (teamMember) => {
 
   const protoQuestions = [
@@ -50,18 +49,27 @@ const promptQuestions = (teamMember) => {
 
   // add team member specific question to the generic qustions
   protoQuestions.push(specificQuestions[teamMember]);
-  protoQuestions.push(finalQuestion);
 
   // initiates inqurer prompt and cycles while still entering team members, then console logs data
-  inquirer.prompt(protoQuestions)
+  inquirer
+    .prompt(protoQuestions)
+    // pushes data to answer array
     .then(data => {
       answerArray.push(data);
-      if (data.nextChoice === 'Finish') {
-        console.log(answerArray);
-      } else {
-        promptQuestions(data.nextChoice);
-      }
-    });
+    })
+    // creates new prompt asking to add more or finish
+    .then( () => {
+      inquirer
+        .prompt(finalQuestion)
+        // checks if final answer is finish, if not restarts prompt
+        .then(data =>{
+          if (data.nextChoice === 'Finish') {
+            console.log(answerArray);
+          } else {
+            promptQuestions(data.nextChoice);
+          }
+        })
+    })
 
 };
 
