@@ -54,6 +54,7 @@ const finalQuestion = {
 
 const promptQuestions = (teamMember) => {
 
+  // generic questions for all Employees
   const protoQuestions = [
     {
       type: 'input',
@@ -99,7 +100,7 @@ const promptQuestions = (teamMember) => {
   // add team member specific question to the generic qustions
   protoQuestions.push(specificQuestions[teamMember]);
 
-  // initiates inqurer prompt and cycles while still entering team members, then console logs data
+  // initiates inquirer prompt
   inquirer
     .prompt(protoQuestions)
     // pushes data to answer array
@@ -110,7 +111,7 @@ const promptQuestions = (teamMember) => {
     .then( () => {
       inquirer
         .prompt(finalQuestion)
-        // checks if final answer is finish, if not restarts prompt
+        // checks if answer is finish, if not restarts prompt with Engineer/Intern choice
         .then(data =>{
           if (data.nextChoice === 'Finish') {
             console.log(answerArray);
