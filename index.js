@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const validator = require('email-validator');
 const generatePage = require('./src/page-template');
+const writeFile = require('./utils/generate-site')
 
 const answerArray = [];
 
