@@ -4,7 +4,7 @@ const answerArray = [];
 
 const specificQuestions = {
   Manager: {
-    type: 'number',
+    type: 'input',
     name: 'managerOffice',
     message: `Please enter the manager's office`
   },
@@ -36,7 +36,7 @@ const promptQuestions = (teamMember) => {
       message: `Please enter the ${teamMember}'s name`
     },
     {
-      type: 'number',
+      type: 'input',
       name: 'id',
       message: `Please enter the ${teamMember}'s id`
     },
