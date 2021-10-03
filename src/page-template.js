@@ -39,11 +39,6 @@ const generateTile = tileObj => {
 };
 
 module.exports = pageData => {
-  
-  // Code to destructure array if needed
-  // const manager = pageData[0];
-  // const engineerArray = pageData.filter(key => key.hasOwnProperty('github'));
-  // const internArray = pageData.filter(key => key.hasOwnProperty('school'));
 
   return `
 <!DOCTYPE html>

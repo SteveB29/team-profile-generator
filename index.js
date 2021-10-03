@@ -99,17 +99,21 @@ const promptQuestions = teamMember => {
     }
   ]
 
-  // add team member specific question to the generic qustions
+  // add team member specific question and final question to the generic qustions
   protoQuestions.push(specificQuestions[teamMember]);
   protoQuestions.push(finalQuestion);
 
   // initiates inquirer prompt
   return inquirer
+  // starts inquirer prompt using modified protoQuestions
     .prompt(protoQuestions)
-    // pushes data to answer array
+    // passes resulting answers object
     .then(data => {
+      // add which teammember type to answer object
       data.title = teamMember;
+      // pushes answer object to array
       answerArray.push(data);
+      // if 'Finish' is chosen, returns data. Otherwise restarts questions
       if (data.nextChoice === 'Finish') {
         return answerArray;
       } else {
