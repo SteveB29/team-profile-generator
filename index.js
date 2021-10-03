@@ -8,7 +8,7 @@ const answerArray = [];
 const specificQuestions = {
   Manager: {
     type: 'input',
-    name: 'managerOffice',
+    name: 'office',
     message: `Please enter the manager's office`,
     validate: officeInput => {
       if (!officeInput) {
@@ -21,7 +21,7 @@ const specificQuestions = {
   },
   Engineer: {
     type: 'input',
-    name: 'engineerGithub',
+    name: 'github',
     message: `Please enter the engineer's github`,
     validate: githubInput => {
       if (!githubInput) {
@@ -34,7 +34,7 @@ const specificQuestions = {
   },
   Intern: {
     type: 'input',
-    name: 'internSchool',
+    name: 'school',
     message: `Please enter the intern's school`,
     validate: schoolInput => {
       if (!schoolInput) {
@@ -54,7 +54,7 @@ const finalQuestion = {
     choices: ['Engineer','Intern','Finish']
 }
 
-const promptQuestions = (teamMember) => {
+const promptQuestions = teamMember => {
 
   // generic questions for all Employees
   const protoQuestions = [
@@ -103,27 +103,33 @@ const promptQuestions = (teamMember) => {
   protoQuestions.push(specificQuestions[teamMember]);
 
   // initiates inquirer prompt
-  inquirer
+  return inquirer
     .prompt(protoQuestions)
     // pushes data to answer array
     .then(data => {
       data.title = teamMember;
       answerArray.push(data);
+      return answerArray;
     })
     // creates new prompt asking to add more or finish
-    .then( () => {
-      inquirer
-        .prompt(finalQuestion)
-        // checks if answer is finish, if not restarts prompt with Engineer/Intern choice
-        .then(data =>{
-          if (data.nextChoice === 'Finish') {
-            generatePage(answerArray);
-          } else {
-            promptQuestions(data.nextChoice);
-          }
-        })
-    })
-
+    // .then( () => {
+    //   inquirer
+    //     .prompt(finalQuestion)
+    //     // checks if answer is finish, if not restarts prompt with Engineer/Intern choice
+    //     .then(data =>{
+    //       if (data.nextChoice === 'Finish') {
+    //         return answerArray;
+    //       } else {
+    //         return promptQuestions(data.nextChoice);
+    //       }
+    //     });
+    // });
 };
 
-promptQuestions('Manager');
+promptQuestions('Manager')
+  .then(answers => {
+    return generatePage(answers);
+  })
+  .then(pageHTML => {
+    console.log(pageHTML);
+  })
