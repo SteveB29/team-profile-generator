@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const validator = require('email-validator');
+const generatePage = require('./src/page-template');
 
 const answerArray = [];
 
@@ -115,7 +116,7 @@ const promptQuestions = (teamMember) => {
         // checks if answer is finish, if not restarts prompt with Engineer/Intern choice
         .then(data =>{
           if (data.nextChoice === 'Finish') {
-            console.log(answerArray);
+            generatePage(answerArray);
           } else {
             promptQuestions(data.nextChoice);
           }
