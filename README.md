@@ -24,4 +24,5 @@
 ## Questions
 - [GitHub](https://github.com/SteveB29)
 - [Application Directory](https://github.com/SteveB29/team-profile-generator)
+- [Video Walkthrough](https://watch.screencastify.com/v/Z2jpY9dWPz1JdHOgoVEj)
 - [Email Me](mailto:steven.bendrick@gmail.com)
