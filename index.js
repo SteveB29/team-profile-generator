@@ -3,6 +3,7 @@ const validator = require('email-validator');
 
 const answerArray = [];
 
+// specific questions for employee type
 const specificQuestions = {
   Manager: {
     type: 'input',
