@@ -7,17 +7,41 @@ const specificQuestions = {
   Manager: {
     type: 'input',
     name: 'managerOffice',
-    message: `Please enter the manager's office`
+    message: `Please enter the manager's office`,
+    validate: officeInput => {
+      if (!officeInput) {
+        console.log('Please enter their office');
+        return false;
+      } else {
+        return true;
+      }
+    }
   },
   Engineer: {
     type: 'input',
     name: 'engineerGithub',
-    message: `Please enter the engineer's github`
+    message: `Please enter the engineer's github`,
+    validate: githubInput => {
+      if (!githubInput) {
+        console.log('Please enter their GitHub username');
+        return false;
+      } else {
+        return true;
+      }
+    }
   },
   Intern: {
     type: 'input',
     name: 'internSchool',
-    message: `Please enter the intern's school`
+    message: `Please enter the intern's school`,
+    validate: schoolInput => {
+      if (!schoolInput) {
+        console.log('Please enter a school');
+        return false;
+      } else {
+        return true;
+      }
+    }
   }
 }
 
@@ -34,12 +58,28 @@ const promptQuestions = (teamMember) => {
     {
       type: 'input',
       name: 'name',
-      message: `Please enter the ${teamMember}'s name`
+      message: `Please enter the ${teamMember}'s name`,
+      validate: nameInput => {
+        if (!nameInput) {
+          console.log('Please enter their name');
+          return false;
+        } else {
+          return true;
+        }
+      }
     },
     {
       type: 'input',
       name: 'id',
-      message: `Please enter the ${teamMember}'s id`
+      message: `Please enter the ${teamMember}'s id`,
+      validate: idInput => {
+        if (!idInput) {
+          console.log('Please enter their ID');
+          return false;
+        } else {
+          return true;
+        }
+      }
     },
     {
       type: 'input',
