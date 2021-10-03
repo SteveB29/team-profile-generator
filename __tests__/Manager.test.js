@@ -15,5 +15,6 @@ test("Runs the Manager methods", () => {
   expect(manager.getName()).toEqual('Steve');
   expect(manager.getId()).toEqual('1');
   expect(manager.getEmail()).toEqual('steven.bendrick@gmail.com');
+  expect(manager.getOffice()).toEqual('12');
   expect(manager.getRole()).toEqual('Manager');
 })

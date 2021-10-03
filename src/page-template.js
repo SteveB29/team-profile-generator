@@ -1,6 +1,6 @@
 const generateUnique = dataObj => {
   if(dataObj.getRole() === "Manager") {
-    return`Office Number: ${dataObj.office}`;
+    return`Office Number: ${dataObj.getOffice()}`;
   } else if (dataObj.getRole() === "Engineer") {
     return`GitHub: <a href="https://github.com/${dataObj.getGithub()}">${dataObj.getGithub()}</a>`;
   } else {
